@@ -34,7 +34,8 @@ router.post('/', (req, res) => {
         }
 
         const file = new File({
-            filename: req.file.filename,
+            filename: req.file.filename, // Generated filename for storage
+            originalName: req.file.originalname, // Original filename from user
             uuid: uuidv4(),
             path: req.file.path,
             size: req.file.size
@@ -79,6 +80,7 @@ router.post('/send', async (req, res) => {
             downloadLink: `${process.env.APP_BASE_URL}/files/${file.uuid}`,
             size: parseInt(file.size / 1000) + 'KB',
             expires: '24 hours',
+            fileName: file.originalName || file.filename,
         }),
     });
 

@@ -6,16 +6,85 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download | InShare - File Sharing Made Easy</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/look/css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .logo {
+            width: 150px;
+            margin-bottom: 30px;
+        }
+        .download {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        .download__icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        .download h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .download p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .download__meta {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .download__meta h4 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+        .download__meta small {
+            color: #666;
+        }
+        .send-btn-container a {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .send-btn-container a:hover {
+            background-color: #2980b9;
+        }
+        .error {
+            color: #e74c3c;
+            font-size: 18px;
+        }
+    </style>
 </head>
 
 <body>
-    <img src="/img/logo.png" alt="Inshare logo" class="logo">
+    <img src="/look/img/logo.png" alt="Inshare logo" class="logo">
 
     <section class="download">
-        <img class="download__icon" src="/img/download-sd.svg" alt="inshare-download">
+        <img class="download__icon" src="/look/img/download-sd.svg" alt="inshare-download">
         <% if(locals.error){ %>
-        <h4><%= locals.error %> 😏</h4>
+        <h4 class="error"><%= locals.error %> 😏</h4>
         <% } else { %>
         <h2>Your file is ready to download</h2>
         <p>Link expires in 24 hours</p>
@@ -24,7 +93,7 @@
             <small><%= parseInt(fileSize/1000) %> KB</small>
         </div>
         <div class="send-btn-container">
-            <a href="<%= download %>">Download file</a>
+            <a href="<%= download %>">📥 Download file</a>
         </div>
         <% } %>
     </section>

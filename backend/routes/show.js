@@ -10,7 +10,7 @@ router.get('/:uuid', async (req,res) => {
 
         return res.render('download',{
             uuid: file.uuid,
-            fileName: file.filename,
+            fileName: file.originalName || file.filename, // Show original filename to user
             fileSize: file.size,
             download:`${process.env.APP_BASE_URL}/files/download/${file.uuid}`
         });
